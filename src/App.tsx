@@ -18,6 +18,8 @@ import { Provider } from 'react-redux';
 import { store } from './data/locals/redux/store';
 import RootView from './screens/RootView';
 import Loading, { LoadingModalRef } from './components/Loading/Loading';
+import {I18nextProvider} from 'react-i18next';
+import configLanguage from './resources/Language.ts';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -30,10 +32,12 @@ function App(): React.JSX.Element {
 
   return (
     <Provider store={store}>
-      <SafeAreaView style={backgroundStyle}>
-        <RootView />
-        <Loading ref={refLoading} />
-      </SafeAreaView>
+      <I18nextProvider i18n={configLanguage}>
+        <SafeAreaView style={backgroundStyle}>
+          <RootView />
+          <Loading ref={refLoading} />
+        </SafeAreaView>
+      </I18nextProvider>
     </Provider>
 
   );
