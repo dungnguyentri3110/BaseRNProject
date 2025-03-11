@@ -17,6 +17,12 @@ import {Sizing} from '../../themes';
 import {useTranslation} from 'react-i18next';
 import configLanguage from '../../resources/Language.ts';
 import IconPerson from '../../assets/svg/images/icon_person.svg';
+import CommonHeader from '../../components/Header/CommonHeader.tsx';
+import CommonButton, {
+  ButtonType,
+} from '../../components/CommonButton/CommonButton.tsx';
+import {CommonInput} from '../../components/CommonInput.tsx';
+import BaseText from '../../components/BaseText/BaseText.tsx';
 
 type Props = NativeStackScreenProps<RootParamList, 'HomeScreen'>;
 export default function HomeScreen({navigation, route}: Props) {
@@ -59,75 +65,92 @@ export default function HomeScreen({navigation, route}: Props) {
 
   return (
     <View style={styles.container}>
-      <Text
-        style={{
-          fontSize: Sizing.fontSize(30),
-          marginBottom: Sizing.size(20),
-        }}>{`HomeScreen ${count}`}</Text>
-      <Text
-        style={{fontSize: Sizing.fontSize(30), marginBottom: Sizing.size(20)}}>
-        {t('title')}
-      </Text>
-      <IconPerson width={Sizing.size(20)} height={Sizing.size(20)} />
-      <View
-        style={{
-          width: Sizing.size(100),
-          height: Sizing.size(100),
-          backgroundColor: 'red',
-          borderRadius: Sizing.size(10),
-        }}
-      />
-      <Text
-        style={{
-          fontSize: Sizing.fontSize(21),
-          marginBottom: Sizing.size(20),
-        }}>{`InCrement`}</Text>
-      <Text
-        style={{
-          fontSize: Sizing.fontSize(21),
-          marginBottom: Sizing.size(20),
-        }}>{`DeCrement`}</Text>
+      <CommonHeader title={'Home Screen'} />
+      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <BaseText
+          text={`練習試合情報`}
+          style={{
+            fontSize: Sizing.fontSize(30),
+            marginBottom: Sizing.size(20),
+          }}
+        />
+        <Text
+          style={{
+            fontSize: Sizing.fontSize(30),
+            marginBottom: Sizing.size(20),
+          }}>{`HomeScreen ${count}`}</Text>
+        <Text
+          style={{
+            fontSize: Sizing.fontSize(30),
+            marginBottom: Sizing.size(20),
+          }}>
+          {t('title')}
+        </Text>
+        <IconPerson width={Sizing.size(20)} height={Sizing.size(20)} />
+        <View
+          style={{
+            width: Sizing.size(100),
+            height: Sizing.size(100),
+            backgroundColor: 'red',
+            borderRadius: Sizing.size(10),
+          }}
+        />
+        <Text
+          style={{
+            fontSize: Sizing.fontSize(21),
+            marginBottom: Sizing.size(20),
+          }}>{`InCrement`}</Text>
+        <Text
+          style={{
+            fontSize: Sizing.fontSize(21),
+            marginBottom: Sizing.size(20),
+          }}>{`DeCrement`}</Text>
 
-      {/* <Button onPress={() => {
+        {/* <Button onPress={() => {
         dispatch(increment())
       }} title='InCrement' /> */}
-      <Button
-        onPress={() => {
-          getList();
-        }}
-        title="DeCrement"
-      />
-      <Button
-        onPress={() => {
-          incrementCount();
-          // const param: AccountScreenProps = {
-          //   name: count.toString()
-          // }
-          // Navigation.navigate('AccountScreen', param)
-          // navigation.navigate('AccountScreen', param)
-        }}
-        title="DeCrement"
-      />
-      <Button
-        onPress={() => {
-          console.log('Get language,', configLanguage.language);
-          if (configLanguage.language === 'en') {
-            configLanguage.changeLanguage('vi');
-          } else {
-            configLanguage.changeLanguage('en');
-          }
-        }}
-        title="Change language"
-      />
-      {listMusicSuccess.data && listMusicSuccess.data!.length > 0 ? (
-        <FlatList
-          data={listMusicSuccess.data!}
-          keyExtractor={(item, index) => item.id.toString()}
-          renderItem={renderItem}
+        <Button
+          onPress={() => {
+            getList();
+          }}
+          title="DeCrement"
         />
-      ) : (
-        <></>
-      )}
+        <Button
+          onPress={() => {
+            incrementCount();
+            // const param: AccountScreenProps = {
+            //   name: count.toString()
+            // }
+            // Navigation.navigate('AccountScreen', param)
+            // navigation.navigate('AccountScreen', param)
+          }}
+          title="DeCrement"
+        />
+        <Button
+          onPress={() => {
+            console.log('Get language,', configLanguage.language);
+            if (configLanguage.language === 'en') {
+              configLanguage.changeLanguage('vi');
+            } else {
+              configLanguage.changeLanguage('en');
+            }
+          }}
+          title="Change language"
+        />
+        {listMusicSuccess.data && listMusicSuccess.data!.length > 0 ? (
+          <FlatList
+            data={listMusicSuccess.data!}
+            keyExtractor={(item, index) => item.id.toString()}
+            renderItem={renderItem}
+          />
+        ) : (
+          <></>
+        )}
+      </View>
+      <CommonInput
+        title={'Email address'}
+        placeHolder={'Enter your email address'}
+      />
     </View>
   );
 }
@@ -135,7 +158,5 @@ export default function HomeScreen({navigation, route}: Props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });

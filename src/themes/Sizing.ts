@@ -2,7 +2,7 @@ import {Dimensions, PixelRatio, Platform} from 'react-native';
 
 const {width} = Dimensions.get('screen');
 
-const baseWidth = 430;
+const baseWidth = 375;
 
 const size = (size: number) => {
   const ratioWidth = width / baseWidth;

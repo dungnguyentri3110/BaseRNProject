@@ -33,10 +33,8 @@ function App(): React.JSX.Element {
   return (
     <Provider store={store}>
       <I18nextProvider i18n={configLanguage}>
-        <SafeAreaView style={backgroundStyle}>
           <RootView />
           <Loading ref={refLoading} />
-        </SafeAreaView>
       </I18nextProvider>
     </Provider>
 

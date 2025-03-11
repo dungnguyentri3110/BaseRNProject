@@ -3,12 +3,12 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
+    "android": "react-native run-android --terminal terminal",
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
-    "ios-dev": "npx react-native run-ios --simulator=\"iPhone 8\" --terminal terminal"
+    "ios-dev": "npx react-native run-ios --simulator=\"iPhone 11\" --terminal terminal"
   },
   "dependencies": {
     "@os-team/i18next-react-native-language-detector": "^1.1.6",
